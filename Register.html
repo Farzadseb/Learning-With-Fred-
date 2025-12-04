@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ثبت‌نام | Learning With Fred</title>
+
+<style>
+body {
+    font-family: sans-serif;
+    background: #f5f7fa;
+    padding: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    margin-top: 15px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #2d6cff;
+    color: white;
+    border-radius: 12px;
+    margin-top: 25px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>ثبت‌نام کاربر</h2>
+
+    <input id="name" type="text" placeholder="نام کامل">
+
+    <select id="role">
+        <option value="student">شاگرد</option>
+        <option value="guest">مهمان</option>
+    </select>
+
+    <button onclick="registerUser()">ثبت‌نام</button>
+</div>
+
+<script>
+function registerUser() {
+
+    const name = document.getElementById("name").value.trim();
+    const role = document.getElementById("role").value;
+
+    if (name.length < 2) {
+        alert("نام معتبر وارد کنید.");
+        return;
+    }
+
+    const data = {
+        action: "register",
+        name: name,
+        role: role
+    };
+
+    fetch("YOUR_SCRIPT_URL_HERE", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    // ذخیره در مرورگر
+    localStorage.setItem("studentName", name);
+    localStorage.setItem("role", role);
+
+    alert("ثبت‌نام با موفقیت انجام شد.");
+    window.location.href = "Lessons.html";
+}
+</script>
+
+</body>
+</html>
