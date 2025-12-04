@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Test Sender</title>
+<style>
+body { font-family: sans-serif; padding: 20px; }
+input { margin: 8px 0; padding: 8px; width: 250px; }
+button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 6px; }
+</style>
+</head>
+<body>
+
+<h2>Send Test Result</h2>
+
+<label>Name:</label><br>
+<input id="name" /><br>
+
+<label>Student Code:</label><br>
+<input id="code" /><br>
+
+<label>Lesson:</label><br>
+<input id="lesson" /><br>
+
+<label>Score:</label><br>
+<input id="score" /><br>
+
+<label>Max Score:</label><br>
+<input id="max" /><br>
+
+<button onclick="send()">Send Test Result</button>
+
+<script>
+async function send() {
+    const url = "YOUR_WEBAPP_URL"; // ❗❗ اینجا لینک WebApp را می‌گذاری
+
+    const data = {
+        name: document.getElementById("name").value,
+        studentCode: document.getElementById("code").value,
+        lesson: document.getElementById("lesson").value,
+        score: document.getElementById("score").value,
+        maxScore: document.getElementById("max").value
+    };
+
+    const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        muteHttpExceptions: true,
+    });
+
+    alert("Sent! Check Telegram & Google Sheet");
+}
+</script>
+
+</body>
+</html>
