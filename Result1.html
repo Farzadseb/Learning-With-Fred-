@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-<meta charset="UTF-8">
-<title>نتیجه تست</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<title>نتیجه درس ۱</title>
 <style>
-body { font-family:sans-serif; background:#f5f7fb; padding:20px; text-align:center; }
-.card {
-    background:white; padding:30px; border-radius:18px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
-}
-.btn {
-    padding:12px 20px; background:#2d6cff; color:white;
-    border-radius:12px; display:block; margin-top:25px;
-    text-decoration:none;
-}
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    .score-box {
+        display: inline-block;
+        padding: 20px;
+        border-radius: 20px;
+        background: #f0f4ff;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #007bff;
+        color: white;
+        border-radius: 12px;
+        text-decoration: none;
+        margin-top: 20px;
+    }
 </style>
 </head>
-
 <body>
 
-<div class="card">
-    <h2>🎉 نتیجه</h2>
-    <p id="scoreBox"></p>
+<h2>نتیجه درس ۱</h2>
 
-    <a class="btn" href="Lessons.html">بازگشت به درس‌ها</a>
-</div>
+<div id="scoreBox" class="score-box">...</div>
+
+<a href="Lessons.html" class="btn">بازگشت به لیست درس‌ها</a>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-document.getElementById("scoreBox").innerText = "امتیاز شما: " + params.get("score");
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get("score");
+    document.getElementById("scoreBox").innerText = "امتیاز شما: " + score + " از 10";
 </script>
 
 </body>
