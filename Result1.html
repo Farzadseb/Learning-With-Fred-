@@ -1,24 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>درس ۱ - Reading</title>
+
+<style>
+    body {
+        font-family: sans-serif;
+        background: #f5f7fb;
+        padding: 22px;
+        line-height: 2.2;
+        user-select: none;
+    }
+
+    .card {
+        background: white;
+        padding: 22px;
+        border-radius: 20px;
+        box-shadow: 0 5px 14px rgba(0,0,0,0.06);
+        margin-bottom: 25px;
+    }
+
+    h2 {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .word {
+        background: #e7edff;
+        padding: 3px 8px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .word:hover {
+        background: #d4e0ff;
+    }
+
+    .sentence {
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 12px;
+        transition: 0.2s;
+    }
+
+    .sentence:hover {
+        background: #fff9dd;
+    }
+
+    .box {
+        display: none;
+        background: #fff3bf;
+        padding: 12px;
+        border-radius: 12px;
+        margin-top: 18px;
+        font-size: 18px;
+    }
+
+    .btn {
+        display: block;
+        text-align: center;
+        background: #2d6cff;
+        padding: 14px;
+        border-radius: 14px;
+        color: white;
+        text-decoration: none;
+        margin-top: 25px;
+        font-size: 18px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>📘 درس ۱</h2>
+
+    <p class="sentence" onclick="showGrammar('این جمله در زمان حال ساده (Present Simple) نوشته شده است.')">
+        My 
+        <span class="word" onclick="showMeaning(event, 'دوست')">friend</span> 
+        <span class="word" onclick="showMeaning(event, 'زندگی می‌کند')">lives</span> 
+        <span class="word" onclick="showMeaning(event, 'در')">in</span> 
+        Tehran.
+    </p>
+
+    <div id="meaningBox" class="box"></div>
+    <div id="grammarBox" class="box"></div>
+
+    <a href="Test1.html" class="btn">رفتن به تست درس ۱</a>
+</div>
+
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const score = Number(urlParams.get("score") || 0);
+function showMeaning(event, meaning) {
+    event.stopPropagation();
+    let box = document.getElementById("meaningBox");
+    box.innerText = "معنی: " + meaning;
+    box.style.display = "block";
+    
+    // پنهان کردن باکس گرامر اگر باز باشد
+    document.getElementById("grammarBox").style.display = "none";
+}
 
-    const name = localStorage.getItem("studentName") || "ناشناس";
+function showGrammar(info) {
+    let box = document.getElementById("grammarBox");
+    box.innerText = info;
+    box.style.display = "block";
 
-    fetch("https://script.google.com/macros/s/AKfycbxrsVMOjWXCorHll5-x_gL1e-Zs9JqMHH9C3QQ9SHdExoL-8GMNhJ_XBLGqXpX2jU6y/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            name: name,
-            lesson: "1",
-            score: score,
-            max: 10,           // ← دقیقاً max (نه maxScore)
-            studentCode: "-",
-            device: navigator.userAgent
-        })
-    }).then(r => r.text())
-      .then(t => console.log("Response:", t))
-      .catch(err => console.log("ERROR:", err));
-
-    document.getElementById("scoreBox").innerText =
-        "امتیاز شما: " + score + " از 10";
+    // پنهان کردن باکس معنی
+    document.getElementById("meaningBox").style.display = "none";
+}
 </script>
+
+</body>
+</html>
