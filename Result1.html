@@ -1,70 +1,61 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
 <meta charset="UTF-8" />
-<title>نتیجه تست درس ۱</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نتیجه درس ۱</title>
 <style>
-body {
-    font-family: sans-serif;
-    background:#f5f7fb;
-    text-align: center;
-    padding-top: 40px;
-}
-
-.box {
-    background:white;
-    padding:25px;
-    width:80%;
-    margin:0 auto;
-    border-radius:18px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-}
-
-.score {
-    font-size:40px;
-    font-weight:bold;
-    color:#2d6cff;
-    margin-bottom:10px;
-}
-
-.small {
-    font-size:18px;
-    color:#555;
-}
-
-.btn {
-    display:inline-block;
-    margin-top:25px;
-    padding:12px 22px;
-    background:#2d6cff;
-    color:white;
-    border-radius:12px;
-    text-decoration:none;
-    font-size:18px;
-}
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    .score-box {
+        display: inline-block;
+        padding: 20px;
+        border-radius: 20px;
+        background: #f0f4ff;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #007bff;
+        color: white;
+        border-radius: 12px;
+        text-decoration: none;
+        margin-top: 20px;
+    }
 </style>
 </head>
 <body>
 
-<h2>نتیجه تست درس ۱</h2>
+<h2>نتیجه درس ۱</h2>
 
-<div class="box">
-    <div id="scoreText" class="score"></div>
-    <div id="totalText" class="small"></div>
-</div>
+<div id="scoreBox" class="score-box">...</div>
 
-<a href="Lessons.html" class="btn">بازگشت به درس‌ها</a>
+<a href="Lessons.html" class="btn">بازگشت به لیست درس‌ها</a>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const score = parseInt(params.get("score")) || 0;
+    // امتیاز را از URL می‌گیریم
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get("score");
 
-// تعداد واقعی سوالات
-const total = 1;
+    document.getElementById("scoreBox").innerText =
+        "امتیاز شما: " + score + " از 10";
 
-document.getElementById("scoreText").textContent = score + " / " + total;
-document.getElementById("totalText").textContent = "امتیاز از " + total;
+    // نام ذخیره‌شده دانش‌آموز
+    const name = localStorage.getItem("studentName") || "ناشناس";
+
+    // ارسال به Google Apps Script
+    fetch("https://script.google.com/macros/s/AKfycbxrsVMOjWXCorHll5-x_gL1e-Zs9JqMHH9C3QQ9SHdExoL-8GMNhJ_XBLGqXpX2jU6y/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            name: name,
+            studentCode: "-",
+            lesson: "Lesson 1",
+            score: Number(score),
+            maxScore: 10,
+            device: navigator.userAgent
+        })
+    });
 </script>
 
 </body>
