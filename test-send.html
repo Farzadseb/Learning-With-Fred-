@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
 <meta charset="UTF-8" />
-<title>Test Sender</title>
+<title>ارسال تست به سیستم گزارشگیری</title>
 <style>
-body { font-family: sans-serif; padding: 20px; }
-input { margin: 8px 0; padding: 8px; width: 250px; }
-button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 6px; }
+    body { font-family: sans-serif; padding: 20px; direction: rtl; }
+    input { margin: 8px 0; padding: 10px; width: 280px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
+    button { padding: 12px 25px; background: #0066ff; color: white; border: none; border-radius: 10px; font-size: 16px; }
 </style>
 </head>
 <body>
 
-<h2>Send Test Result</h2>
+<h2>ارسال تست به سیستم «Learning With Fred»</h2>
 
-<label>Name:</label><br>
+<label>نام شاگرد:</label><br>
 <input id="name" /><br>
 
-<label>Student Code:</label><br>
+<label>کد شاگرد:</label><br>
 <input id="code" /><br>
 
-<label>Lesson:</label><br>
+<label>درس:</label><br>
 <input id="lesson" /><br>
 
-<label>Score:</label><br>
+<label>نمره:</label><br>
 <input id="score" /><br>
 
-<label>Max Score:</label><br>
-<input id="max" /><br>
+<label>نمره کامل:</label><br>
+<input id="max" /><br><br>
 
-<button onclick="send()">Send Test Result</button>
+<button onclick="send()">ارسال تست</button>
 
 <script>
 async function send() {
-    const url = "YOUR_WEBAPP_URL"; // ❗❗ اینجا لینک WebApp را می‌گذاری
+    const url = "https://script.google.com/macros/s/AKfycbxrsVMOjWXCorHll5-x_gL1e-Zs9JqMHH9C3QQ9SHdExoL-8GMNhJ_XBLGqXpX2jU6y/exec";
 
     const data = {
         name: document.getElementById("name").value,
@@ -42,13 +42,13 @@ async function send() {
         maxScore: document.getElementById("max").value
     };
 
-    const res = await fetch(url, {
+    const response = await fetch(url, {
         method: "POST",
         body: JSON.stringify(data),
-        muteHttpExceptions: true,
+        headers: { "Content-Type": "application/json" }
     });
 
-    alert("Sent! Check Telegram & Google Sheet");
+    alert("ارسال شد! تلگرام و شیت را چک کن.");
 }
 </script>
 
