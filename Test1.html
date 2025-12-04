@@ -11,9 +11,8 @@ body { font-family: sans-serif; background:#f5f7fb; padding:20px; }
     box-shadow:0 4px 15px rgba(0,0,0,0.08); margin-bottom:15px;
 }
 button {
-    padding:12px 20px; border-radius:12px; border:0;
-    background:#2d6cff; color:white; font-size:16px;
-    margin-top:10px; cursor:pointer;
+    padding:12px 18px; border-radius:12px; border:0;
+    background:#2d6cff; color:white; margin-top:10px; font-size:17px;
 }
 </style>
 </head>
@@ -22,33 +21,55 @@ button {
 
 <h2>📝 تست درس ۱</h2>
 
-<!-- سؤال ۱ -->
 <div class="card">
-    <p>1) معنی friend چیست؟</p>
-
-    <label><input type="radio" name="q1" value="0"> کتاب</label><br>
-    <label><input type="radio" name="q1" value="1"> دوست</label><br>
-    <label><input type="radio" name="q1" value="0"> خانه</label>
+    1) معنی friend چیست؟
+    <br><br>
+    <input type="radio" name="q1" value="0"> کتاب  
+    <br>
+    <input type="radio" name="q1" value="1"> دوست  
+    <br>
+    <input type="radio" name="q1" value="0"> خانه  
 </div>
 
-<button onclick="finish()">پایان تست</button>
+<button onclick="finishTest()">پایان تست</button>
 
 <script>
-function finish() {
 
-    let answer = document.querySelector('input[name="q1"]:checked');
-
-    if (!answer) {
-        alert("لطفاً یک گزینه انتخاب کنید.");
-        return;
-    }
+// ---------------------------
+//   پایان تست و ارسال داده
+// ---------------------------
+function finishTest(){
 
     let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value == "1")
+        score = 1;
 
-    if (answer.value == "1") score = 1;
+    const studentName = localStorage.getItem("studentName") || "Unknown";
+    const lesson = "Lesson 1";
 
+    const data = {
+        studentName: studentName,
+        studentCode: 1,               // بعداً واقعی می‌شود
+        lesson: lesson,
+        score: score,
+        maxScore: 1,
+        device: navigator.userAgent
+    };
+
+    // ارسال به Google Script
+    fetch("https://script.google.com/macros/s/AKfycbxrsVMOjWXCorHll5-x_gL1e-Zs9JqMHH9C3QQ9SHdExoL-8GMNhJ_XBLGqXpX2jU6y/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    // رفتن به صفحه نتیجه
     window.location.href = "Result1.html?score=" + score;
 }
+
 </script>
 
 </body>
