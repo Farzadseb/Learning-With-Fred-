@@ -1,62 +1,24 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-<meta charset="UTF-8" />
-<title>نتیجه درس ۱</title>
-<style>
-    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-    .score-box {
-        display: inline-block;
-        padding: 20px;
-        border-radius: 20px;
-        background: #f0f4ff;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
-    .btn {
-        display: inline-block;
-        padding: 12px 25px;
-        background: #007bff;
-        color: white;
-        border-radius: 12px;
-        text-decoration: none;
-        margin-top: 20px;
-    }
-</style>
-</head>
-<body>
-
-<h2>نتیجه درس ۱</h2>
-
-<div id="scoreBox" class="score-box">...</div>
-
-<a href="Lessons.html" class="btn">بازگشت به لیست درس‌ها</a>
-
 <script>
-    // امتیاز را از URL می‌گیریم
     const urlParams = new URLSearchParams(window.location.search);
-    const score = urlParams.get("score");
+    const score = Number(urlParams.get("score") || 0);
+
+    const name = localStorage.getItem("studentName") || "ناشناس";
+
+    fetch("https://script.google.com/macros/s/AKfycbxrsVMOjWXCorHll5-x_gL1e-Zs9JqMHH9C3QQ9SHdExoL-8GMNhJ_XBLGqXpX2jU6y/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            name: name,
+            lesson: "1",
+            score: score,
+            max: 10,           // ← دقیقاً max (نه maxScore)
+            studentCode: "-",
+            device: navigator.userAgent
+        })
+    }).then(r => r.text())
+      .then(t => console.log("Response:", t))
+      .catch(err => console.log("ERROR:", err));
 
     document.getElementById("scoreBox").innerText =
         "امتیاز شما: " + score + " از 10";
-
-    // نام ذخیره‌شده دانش‌آموز
-    const name = localStorage.getItem("studentName") || "ناشناس";
-
-    // ارسال به Google Apps Script
-    fetch("https://script.google.com/macros/s/AKfycbxrsVMOjWXCorHll5-x_gL1e-Zs9JqMHH9C3QQ9SHdExoL-8GMNhJ_XBLGqXpX2jU6y/exec", {
-        method: "POST",
-        body: JSON.stringify({
-            name: name,
-            studentCode: "-",
-            lesson: "Lesson 1",
-            score: Number(score),
-            maxScore: 10,
-            device: navigator.userAgent
-        })
-    });
 </script>
-
-</body>
-</html>
