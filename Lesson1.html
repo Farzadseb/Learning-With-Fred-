@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درس‌ها | Learning With Fred</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f6fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 25px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #1c1c1e;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 25px 15px;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1c1c1e;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .back {
+            display: block;
+            margin-top: 35px;
+            text-align: center;
+            font-size: 18px;
+            color: #2c7df0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">انتخاب درس</div>
+
+    <div class="grid">
+        <div class="card" onclick="openLesson(1)">درس 1</div>
+        <div class="card" onclick="openLesson(2)">درس 2</div>
+        <div class="card" onclick="openLesson(3)">درس 3</div>
+        <div class="card" onclick="openLesson(4)">درس 4</div>
+        <div class="card" onclick="openLesson(5)">درس 5</div>
+        <div class="card" onclick="openLesson(6)">درس 6</div>
+        <div class="card" onclick="openLesson(7)">درس 7</div>
+        <div class="card" onclick="openLesson(8)">درس 8</div>
+        <div class="card" onclick="openLesson(9)">درس 9</div>
+        <div class="card" onclick="openLesson(10)">درس 10</div>
+    </div>
+
+    <a href="Start.html" class="back">بازگشت</a>
+
+</div>
+
+<script>
+    function openLesson(num) {
+        window.location.href = "Lesson" + num + ".html";
+    }
+</script>
+
+</body>
+</html>
