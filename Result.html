@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>نتیجه تست</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family:sans-serif; background:#f5f7fb; padding:20px; text-align:center; }
+.card {
+    background:white; padding:30px; border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+.btn {
+    padding:12px 20px; background:#2d6cff; color:white;
+    border-radius:12px; display:block; margin-top:25px;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>🎉 نتیجه</h2>
+    <p id="scoreBox"></p>
+
+    <a class="btn" href="Lessons.html">بازگشت به درس‌ها</a>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("scoreBox").innerText = "امتیاز شما: " + params.get("score");
+</script>
+
+</body>
+</html>
