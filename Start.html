@@ -1,101 +1,76 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>شروع یادگیری | Learning With Fred</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شروع | Learning With Fred</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #f4f6fa;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: sans-serif;
+        background: #f5f7fa;
+        text-align: center;
+        padding-top: 60px;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 480px;
-            padding: 30px 22px;
-            text-align: center;
-        }
+    h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+        color: #222;
+    }
 
-        .logo {
-            font-size: 30px;
-            font-weight: 800;
-            color: #1c1c1e;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
+    input {
+        width: 80%;
+        padding: 14px;
+        font-size: 18px;
+        margin-top: 20px;
+        border-radius: 12px;
+        border: 1px solid #bbb;
+        outline: none;
+    }
 
-        .subtitle {
-            color: #6e6e73;
-            font-size: 16px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: #fff;
-            padding: 25px;
-            border-radius: 22px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-            margin-bottom: 25px;
-        }
-
-        .start-btn {
-            margin-top: 20px;
-            background: linear-gradient(135deg, #2c7df0, #3fb7ff);
-            border: none;
-            width: 100%;
-            padding: 15px;
-            border-radius: 16px;
-            color: white;
-            font-size: 19px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .start-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(44,125,240,0.28);
-        }
-
-        .level {
-            margin-top: 12px;
-            font-size: 16px;
-            color: #555;
-        }
-    </style>
+    button {
+        margin-top: 25px;
+        padding: 14px 40px;
+        font-size: 18px;
+        border: none;
+        background: #2c7df0;
+        color: white;
+        border-radius: 12px;
+        cursor: pointer;
+        outline: none;
+    }
+</style>
 </head>
-
 <body>
 
-    <div class="container">
+<h1>Learning With Fred</h1>
 
-        <div class="logo">Learning With Fred</div>
-        <div class="subtitle">به برنامه یادگیری خوش آمدید</div>
+<p>نام خود را وارد کنید:</p>
 
-        <div class="card">
-            <h3>آماده‌ای شروع کنی؟</h3>
-            <p>برای ورود به درس‌ها، دکمه زیر را بزن.</p>
+<input type="text" id="nameInput" placeholder="نام شما">
 
-            <button class="start-btn" onclick="goLessons()">شروع یادگیری</button>
-            <div class="level">سطح فعلی: A1</div>
-        </div>
+<br>
 
-    </div>
+<button onclick="startApp()">شروع</button>
 
-    <script>
-        function goLessons() {
-            window.location.href = "lessons.html";
-        }
-    </script>
+<script>
+function startApp() {
+    const name = document.getElementById("nameInput").value.trim();
+
+    if(name.length < 2) {
+        alert("لطفاً نام را درست وارد کنید.");
+        return;
+    }
+
+    // ذخیره نام در دستگاه
+    localStorage.setItem("studentName", name);
+
+    // انتقال به صفحه درس‌ها
+    window.location.href = "lessons.html";
+}
+</script>
 
 </body>
 </html>
