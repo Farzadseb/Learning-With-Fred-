@@ -11,8 +11,9 @@ body { font-family: sans-serif; background:#f5f7fb; padding:20px; }
     box-shadow:0 4px 15px rgba(0,0,0,0.08); margin-bottom:15px;
 }
 button {
-    padding:10px 15px; border-radius:12px; border:0;
-    background:#2d6cff; color:white; margin-top:10px;
+    padding:12px 20px; border-radius:12px; border:0;
+    background:#2d6cff; color:white; font-size:16px;
+    margin-top:10px; cursor:pointer;
 }
 </style>
 </head>
@@ -21,25 +22,32 @@ button {
 
 <h2>📝 تست درس ۱</h2>
 
+<!-- سؤال ۱ -->
 <div class="card">
-    1) معنی friend چیست؟  
-    <br><br>
-    <input type="radio" name="q1" value="0"> کتاب  
-    <br>
-    <input type="radio" name="q1" value="1"> دوست  
-    <br>
-    <input type="radio" name="q1" value="0"> خانه  
+    <p>1) معنی friend چیست؟</p>
+
+    <label><input type="radio" name="q1" value="0"> کتاب</label><br>
+    <label><input type="radio" name="q1" value="1"> دوست</label><br>
+    <label><input type="radio" name="q1" value="0"> خانه</label>
 </div>
 
 <button onclick="finish()">پایان تست</button>
 
 <script>
-function finish(){
-    let score = 0;
-    if (document.querySelector('input[name="q1"]:checked')?.value == "1")
-        score++;
+function finish() {
 
-    window.location.href = "Result1.html?score="+score;
+    let answer = document.querySelector('input[name="q1"]:checked');
+
+    if (!answer) {
+        alert("لطفاً یک گزینه انتخاب کنید.");
+        return;
+    }
+
+    let score = 0;
+
+    if (answer.value == "1") score = 1;
+
+    window.location.href = "Result1.html?score=" + score;
 }
 </script>
 
