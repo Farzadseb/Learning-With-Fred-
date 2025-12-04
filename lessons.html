@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>درس‌ها | Learning With Fred</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 25px;
+    background: #f5f7fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-align: center;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px auto;
+    width: 85%;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.disabled {
+    background: #e0e0e0;
+    color: #777;
+    cursor: default;
+}
+</style>
+</head>
+
+<body>
+
+<h2>درس‌های سطح A1</h2>
+
+<div class="card" onclick="openLesson(1)">درس 1</div>
+
+<div class="card disabled">درس 2 (به‌زودی)</div>
+<div class="card disabled">درس 3 (به‌زودی)</div>
+<div class="card disabled">درس 4 (به‌زودی)</div>
+<div class="card disabled">درس 5 (به‌زودی)</div>
+
+<script>
+function openLesson(num){
+    window.location.href = "reading" + num + ".html";
+}
+</script>
+
+</body>
+</html>
