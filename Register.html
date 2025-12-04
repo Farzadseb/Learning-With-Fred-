@@ -2,98 +2,91 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ثبت‌نام | Learning With Fred</title>
-
 <style>
 body {
-    font-family: sans-serif;
-    background: #f5f7fa;
-    padding: 25px;
+    margin: 0;
+    padding: 0;
+    background: #f4f6fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
-
-.card {
+.box {
     background: white;
-    padding: 25px;
+    width: 85%;
+    max-width: 420px;
+    padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
-}
-
-h2 {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
     text-align: center;
-    margin-bottom: 20px;
 }
-
-input, select {
-    width: 100%;
-    padding: 14px;
+h2 { margin-bottom: 25px; color: #222; }
+input {
+    width: 85%;
+    padding: 12px;
+    margin-top: 12px;
     font-size: 18px;
-    margin-top: 15px;
     border-radius: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #bbb;
 }
-
-button {
-    width: 100%;
+.btn {
+    margin-top: 22px;
     padding: 14px;
-    background: #2d6cff;
+    width: 90%;
+    background: linear-gradient(135deg,#2c7df0,#3fb7ff);
     color: white;
-    border-radius: 12px;
-    margin-top: 25px;
-    font-size: 18px;
     border: none;
+    border-radius: 16px;
+    font-size: 18px;
     cursor: pointer;
+    font-weight: bold;
+}
+.role-btn {
+    margin-top: 15px;
+    padding: 12px;
+    width: 90%;
+    border-radius: 14px;
+    border: 1px solid #2c7df0;
+    background: white;
+    color: #2c7df0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.role-btn.active {
+    background: #2c7df0;
+    color: white;
 }
 </style>
 </head>
-
 <body>
-
-<div class="card">
-    <h2>ثبت‌نام کاربر</h2>
-
-    <input id="name" type="text" placeholder="نام کامل">
-
-    <select id="role">
-        <option value="student">شاگرد</option>
-        <option value="guest">مهمان</option>
-    </select>
-
-    <button onclick="registerUser()">ثبت‌نام</button>
+<div class="box">
+    <h2>ثبت‌نام</h2>
+    <input type="text" id="nameInput" placeholder="نام شما">
+    <button class="role-btn" id="studentBtn" onclick="selectRole('student')">من شاگرد هستم</button>
+    <button class="role-btn" id="guestBtn" onclick="selectRole('guest')">ورود مهمان</button>
+    <button class="btn" onclick="registerUser()">ادامه</button>
 </div>
-
 <script>
+let selectedRole = "";
+function selectRole(role) {
+    selectedRole = role;
+    document.getElementById("studentBtn").classList.remove("active");
+    document.getElementById("guestBtn").classList.remove("active");
+    if (role === "student") document.getElementById("studentBtn").classList.add("active");
+    if (role === "guest") document.getElementById("guestBtn").classList.add("active");
+}
 function registerUser() {
-
-    const name = document.getElementById("name").value.trim();
-    const role = document.getElementById("role").value;
-
-    if (name.length < 2) {
-        alert("نام معتبر وارد کنید.");
-        return;
-    }
-
-    const data = {
-        action: "register",
-        name: name,
-        role: role
-    };
-
-    fetch("YOUR_SCRIPT_URL_HERE", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    });
-
-    // ذخیره در مرورگر
-    localStorage.setItem("studentName", name);
-    localStorage.setItem("role", role);
-
-    alert("ثبت‌نام با موفقیت انجام شد.");
+    const name = document.getElementById("nameInput").value.trim();
+    if (name.length < 2) { alert("نام را درست وارد کنید"); return; }
+    if (selectedRole === "") { alert("لطفاً حالت خود را انتخاب کنید"); return; }
+    const user = { name: name, role: selectedRole, testsToday: 0, mistakes: [] };
+    localStorage.setItem("fredUser", JSON.stringify(user));
     window.location.href = "Lessons.html";
 }
 </script>
-
 </body>
 </html>
