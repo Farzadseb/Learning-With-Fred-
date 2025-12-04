@@ -1,129 +1,25 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>درس 1 | Learning With Fred</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #f4f6fa;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 25px;
-        }
-
-        .title {
-            font-size: 26px;
-            font-weight: 800;
-            color: #1c1c1e;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .card {
-            background: #fff;
-            padding: 22px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-        }
-
-        .word {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1c1c1e;
-            margin-bottom: 6px;
-        }
-
-        .definition {
-            font-size: 15px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .example {
-            font-size: 15px;
-            color: #2c7df0;
-            margin-bottom: 5px;
-        }
-
-        .example-fa {
-            font-size: 14px;
-            color: #777;
-        }
-
-        .test-btn {
-            width: 100%;
-            margin-top: 30px;
-            padding: 15px;
-            background: linear-gradient(135deg, #2c7df0, #3fb7ff);
-            border-radius: 16px;
-            border: none;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .back {
-            display: block;
-            text-align: center;
-            margin-top: 25px;
-            font-size: 16px;
-            color: #2c7df0;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>درس ۱</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family:sans-serif; background:#f5f7fb; padding:20px; }
+.card { background:white; padding:20px; border-radius:18px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.08); }
+.btn { padding:12px 20px; background:#2d6cff; color:white;
+       border-radius:12px; display:inline-block; margin-top:20px; text-decoration:none; }
+.word { background:#eaf0ff; padding:2px 6px; border-radius:8px; }
+</style>
 </head>
-
 <body>
-
-<div class="container">
-
-    <div class="title">درس 1 — شروع پایه</div>
-
-    <!-- نمونهٔ 3 کلمه + جمله (بعداً می‌توانیم 20–30 کلمه قرار دهیم) -->
-
-    <div class="card">
-        <div class="word">Book</div>
-        <div class="definition">کتاب</div>
-        <div class="example">I read a book</div>
-        <div class="example-fa">من یک کتاب می‌خوانم</div>
-    </div>
-
-    <div class="card">
-        <div class="word">Pen</div>
-        <div class="definition">خودکار</div>
-        <div class="example">This is my pen</div>
-        <div class="example-fa">این خودکار من است</div>
-    </div>
-
-    <div class="card">
-        <div class="word">School</div>
-        <div class="definition">مدرسه</div>
-        <div class="example">I go to school</div>
-        <div class="example-fa">من به مدرسه می‌روم</div>
-    </div>
-
-    <!-- دکمه تست درس -->
-    <button class="test-btn" onclick="startTest()">تست درس 1</button>
-
-    <a href="lessons.html" class="back">بازگشت</a>
-
+<div class="card">
+<h2>📘 درس ۱</h2>
+<p>
+My <span class="word">friend</span> lives in Tehran.
+</p>
+<a href="Test1.html" class="btn">رفتن به تست</a>
 </div>
-
-<script>
-function startTest() {
-    window.location.href = "test1.html";
-}
-</script>
-
 </body>
 </html>
