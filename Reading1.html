@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>درس ۱ - Reading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: sans-serif;
+    background:#f5f7fb;
+    padding:20px;
+}
+.card {
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+.word {
+    background:#eaf0ff;
+    padding:2px 6px;
+    border-radius:8px;
+    cursor:pointer;
+}
+.sentence {
+    cursor:pointer;
+    padding:4px;
+    border-radius:8px;
+}
+.mean-box {
+    margin-top:15px;
+    background:#fff4d6;
+    padding:10px;
+    border-radius:10px;
+    display:none;
+}
+.btn {
+    padding:12px 20px;
+    background:#2d6cff;
+    color:white;
+    border-radius:12px;
+    display:block;
+    text-align:center;
+    margin-top:25px;
+    text-decoration:none;
+    font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>📘 درس ۱</h2>
+
+    <p class="sentence" onclick="showGrammar('این جمله در زمان حال ساده است.')">
+        My <span class="word" onclick="showMeaning(event, 'دوست')">friend</span> 
+        lives <span class="word" onclick="showMeaning(event, 'زندگی می‌کند')">lives</span> 
+        in <span class="word" onclick="showMeaning(event, 'در')">in</span> 
+        Tehran.
+    </p>
+
+    <div id="meaningBox" class="mean-box"></div>
+    <div id="grammarBox" class="mean-box"></div>
+
+    <a class="btn" href="Test1.html">رفتن به تست درس ۱</a>
+</div>
+
+<script>
+function showMeaning(event, meaning){
+    event.stopPropagation();
+    let box = document.getElementById('meaningBox');
+    box.innerHTML = "معنی کلمه: " + meaning;
+    box.style.display = "block";
+}
+
+function showGrammar(text){
+    let box = document.getElementById('grammarBox');
+    box.innerHTML = text;
+    box.style.display = "block";
+}
+</script>
+
+</body>
+</html>
