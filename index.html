@@ -1,1 +1,51 @@
-<html><body>Fred App Placeholder</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning With Fred</title>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#5567FF">
+
+    <!-- iOS PWA Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Fred">
+
+    <!-- iOS Icons + Splash -->
+    <link rel="apple-touch-icon" href="assets/icons/icon-1024.png">
+    <link rel="apple-touch-startup-image" href="assets/splash/splash.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Learning With Fred</h1>
+        <p>The modern way to learn English — faster, smarter, and fun.</p>
+
+        <button onclick="startApp()">Start</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        function startApp() {
+            window.location.href = "guest.html"; 
+        }
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            .catch(err => console.log("SW registration failed:", err));
+        }
+    </script>
+
+</body>
+</html><html><body>Fred App Placeholder</body></html>
