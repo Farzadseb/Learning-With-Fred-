@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fred Exam</title>
+
+    <meta name="theme-color" content="#5567FF">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #F3F5FF;
+            padding: 0;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .examContainer {
+            padding: 20px;
+        }
+
+        .examHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        .timer {
+            font-size: 20px;
+            font-weight: 600;
+            color: #5567FF;
+        }
+
+        .questionBox {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        .questionText {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .option {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            font-size: 18px;
+            transition: 0.2s ease;
+        }
+
+        .option:hover {
+            transform: scale(1.02);
+        }
+
+        .selected {
+            border: 2px solid #5567FF;
+            background: #EEF1FF;
+        }
+
+        .nextButton {
+            background: #5567FF;
+            width: 100%;
+            padding: 15px;
+            border-radius: 14px;
+            color: white;
+            border: none;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(85,103,255,0.35);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="examContainer">
+
+    <!-- Exam Header -->
+    <div class="examHeader">
+        <div class="questionNumber">Question 1</div>
+        <div class="timer" id="timer">10:00</div>
+    </div>
+
+    <!-- Question -->
+    <div class="questionBox">
+        <div class="questionText" id="questionText">
+            Loading question...
+        </div>
+    </div>
+
+    <!-- Options -->
+    <div class="options" id="optionsBox">
+        <!-- Dynamically filled by tests.js -->
+    </div>
+
+    <!-- Next Button -->
+    <button class="nextButton" onclick="nextQuestion()">
+        Next →
+    </button>
+
+</div>
+
+<script src="tests.js"></script>
+<script>
+window.onload = function() {
+    startExam();
+};
+</script>
+
+</body>
+</html>
