@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------
    TEST ENGINE – Learning With Fred
-   Phase 1: Core engine + Google Sheet + Cache
+   Full Version: Phase 1 + Anti-Cheat Stage 1–B
 --------------------------------------------------------- */
 
 let QUESTIONS = [];          // Main question list
@@ -8,6 +8,9 @@ let currentIndex = 0;        // Current question number
 let userAnswers = [];        // User's selected answers
 let startTime = null;        // Exam start time
 let sheetVersion = 1;        // Used for caching
+let selectedOption = null;   // Which option user chose
+let cheatCount = 0;          // Number of cheating attempts
+let cheatLog = [];           // Cheating timestamps
 
 /* ---------------------------------------------------------
    1) Load questions from Sheet OR Cache
@@ -43,6 +46,8 @@ async function loadQuestions() {
 --------------------------------------------------------- */
 
 async function startExam() {
+    document.body.style.overflow = "hidden"; // Disable scrolling
+
     await loadQuestions();
     startTime = Date.now();
 
@@ -71,6 +76,7 @@ function loadQuestion() {
     document.getElementById("questionText").innerText = Q.question;
 
     // Load options
+    selectedOption = null;
     const box = document.getElementById("optionsBox");
     box.innerHTML = "";
 
@@ -84,12 +90,12 @@ function loadQuestion() {
 }
 
 /* ---------------------------------------------------------
-   4) Select Option
+   4) Select Option (Locked After First Click)
 --------------------------------------------------------- */
 
-let selectedOption = null;
-
 function selectOption(index, div) {
+    if (selectedOption !== null) return; // Prevent reselection
+
     selectedOption = index;
 
     // Remove previous selections
@@ -117,9 +123,7 @@ function nextQuestion() {
         isCorrect: selectedOption === QUESTIONS[currentIndex].answer
     });
 
-    selectedOption = null;
     currentIndex++;
-
     loadQuestion();
 }
 
@@ -128,6 +132,8 @@ function nextQuestion() {
 --------------------------------------------------------- */
 
 function finishExam() {
+    document.body.style.overflow = "auto"; // Restore scrolling
+
     const timeTaken = Math.floor((Date.now() - startTime) / 1000);
 
     const correctCount = userAnswers.filter(a => a.isCorrect).length;
@@ -136,12 +142,13 @@ function finishExam() {
     alert(
         "Exam Finished!\n\n" +
         "Score: " + correctCount + " / " + total + "\n" +
-        "Time: " + timeTaken + " seconds"
+        "Time: " + timeTaken + " seconds\n" +
+        "Cheat attempts: " + cheatCount
     );
 
-    // TODO: Send to Google Sheet
+    // TODO: Save mistakes to Leitner
+    // TODO: Send results to Google Sheet
     // TODO: Send summary to WhatsApp/Telegram
-    // TODO: Save Mistakes in Leitner
 }
 
 /* ---------------------------------------------------------
@@ -168,13 +175,11 @@ function startTimer(seconds) {
             finishExam();
         }
     }, 1000);
-}/ tests engine
-/* ---------------------------------------------------------
-   ANTI-CHEAT ENGINE – Stage 1
---------------------------------------------------------- */
+}
 
-let cheatCount = 0;
-let cheatLog = [];
+/* ---------------------------------------------------------
+   8) ANTI-CHEAT: Detect screen changes
+--------------------------------------------------------- */
 
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
@@ -192,3 +197,14 @@ document.addEventListener("visibilitychange", () => {
         }
     }
 });
+
+/* ---------------------------------------------------------
+   9) ANTI-CHEAT: Block Back Button
+--------------------------------------------------------- */
+
+history.pushState(null, null, location.href);
+
+window.onpopstate = function () {
+    history.go(1);
+    alert("⚠️ You cannot go back during the exam.");
+};
