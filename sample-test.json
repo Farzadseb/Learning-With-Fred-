@@ -1,6 +1,0 @@
-{
-  "title": "Sample Test",
-  "questions": [
-    {"type":"text","question":"Hello = ?","answer":"سلام"}
-  ]
-}
