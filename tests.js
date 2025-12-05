@@ -169,3 +169,26 @@ function startTimer(seconds) {
         }
     }, 1000);
 }/ tests engine
+/* ---------------------------------------------------------
+   ANTI-CHEAT ENGINE – Stage 1
+--------------------------------------------------------- */
+
+let cheatCount = 0;
+let cheatLog = [];
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        cheatCount++;
+        cheatLog.push({
+            time: new Date().toLocaleTimeString(),
+            question: currentIndex + 1
+        });
+
+        alert("⚠️ Warning: Switching away from the exam is not allowed.");
+
+        if (cheatCount >= 3) {
+            alert("❌ Exam terminated due to repeated cheating.");
+            finishExam();
+        }
+    }
+});
