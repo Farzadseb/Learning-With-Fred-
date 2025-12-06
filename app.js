@@ -1,1 +1,0 @@
-console.log('Fred Alpha sample is running');
