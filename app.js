@@ -1,1 +1,1 @@
-console.log('Fred app loaded');
+console.log('Fred Alpha sample is running');

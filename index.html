@@ -1,99 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Learning With Fred</title>
-
-    <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#5567FF">
-
-    <!-- iOS PWA Support -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Fred">
-
-    <!-- iOS Icons + Splash -->
-    <link rel="apple-touch-icon" href="assets/icons/icon-1024.png">
-    <link rel="apple-touch-startup-image" href="assets/splash/splash.png">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+<meta charset='UTF-8'>
+<title>Fred Alpha</title>
+<link rel='stylesheet' href='style.css'>
 </head>
-
 <body>
-
-<div class="home">
-
-    <!-- Header -->
-    <div class="header">
-        <img src="assets/icons/icon-192.png" class="logo">
-        <div class="titlebox">
-            <h1 class="appTitle">Learning With Fred</h1>
-            <p class="subtitle">Your daily English companion</p>
-        </div>
-    </div>
-
-    <!-- Message From Fred -->
-    <div class="fredMessage">
-        👋 Hi! Ready for today’s lesson?
-    </div>
-
-    <!-- Progress -->
-    <div class="progressCard">
-        <h2>Today's Progress</h2>
-        <div class="progressBar">
-            <div class="progressFill" style="width: 30%;"></div>
-        </div>
-        <p class="progressText">30% completed</p>
-    </div>
-
-    <!-- Lessons -->
-    <div class="lessonList">
-        <h2>Lessons</h2>
-
-        <div class="lessonCard" onclick="startLesson(1)">
-            <h3>Lesson 1: Basics</h3>
-            <p>Vocabulary + Reading</p>
-        </div>
-
-        <div class="lessonCard locked">
-            <h3>Lesson 2</h3>
-            <p>Locked — complete Lesson 1</p>
-        </div>
-    </div>
-
-    <!-- Test Button -->
-    <button class="testButton" onclick="startTest()">
-        Start Test
-    </button>
-
-</div>
-
-<!-- Scripts -->
-<script src="app.js"></script>
-<script src="tests.js"></script>
-<script src="guest.js"></script>
-<script src="leitner.js"></script>
-
-<script>
-function startLesson(num) {
-    alert("Lesson " + num + " will open in the next build.");
-}
-
-function startTest() {
-    alert("Test Engine will be activated next.");
-}
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-    .catch(err => console.log("SW failed:", err));
-}
-</script>
-
+<h1>Learning With Fred – Alpha</h1>
+<p>Sample alpha build running successfully.</p>
+<script src='app.js'></script>
 </body>
 </html>
