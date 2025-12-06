@@ -1,0 +1,6 @@
+
+body { font-family:-apple-system, BlinkMacSystemFont, sans-serif; background:#f4f6ff; margin:0; }
+.page { padding:20px; }
+.mainBtn { width:100%; padding:15px; margin-top:15px; background:#3b57ff; 
+color:white; border:none; border-radius:14px; font-size:18px; }
+#options button { width:100%; padding:12px; margin:6px 0; border-radius:12px; border:2px solid #3b57ff; }
