@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning With Fred – Splash</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            background: #E7F0FF; /* آبی روشن Fred */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: fadeIn 1.2s ease;
+        }
+
+        img.logo {
+            width: 42%;
+            max-width: 260px;
+            animation: pop 0.7s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes pop {
+            0%   { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="../assets/logo.png" class="logo" alt="Learning With Fred">
+
+    <script>
+        setTimeout(() => {
+            const user = localStorage.getItem("lwfred_user");
+
+            if (!user) {
+                window.location.href = "onboarding.html";
+            } else {
+                const u = JSON.parse(user);
+
+                if (u.role === "student") {
+                    window.location.href = "student-home.html";
+                } else {
+                    window.location.href = "guest-home.html";
+                }
+            }
+        }, 1800);
+    </script>
+
+</body>
+</html>
