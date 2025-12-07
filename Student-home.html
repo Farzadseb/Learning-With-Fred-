@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning With Fred – Home</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #F2F4FF;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding-bottom: 80px; /* space for bottom nav */
+        }
+
+        .header {
+            padding: 28px 20px 10px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            margin: 0;
+        }
+
+        .subtitle {
+            opacity: 0.6;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            height: 130px;
+            border-radius: 18px;
+            padding: 16px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .card:active {
+            transform: scale(0.97);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .card-description {
+            opacity: 0.6;
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #DCE0F5;
+        }
+
+        .nav-item {
+            text-align: center;
+            font-size: 14px;
+            color: #7A7F9E;
+        }
+
+        .nav-item.active {
+            color: #4C6FFF;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <h1 id="greeting">Hello!</h1>
+        <div class="subtitle">Welcome back to your learning path</div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card" onclick="go('books.html')">
+            <div class="card-title">Books</div>
+            <div class="card-description">Your study materials</div>
+        </div>
+
+        <div class="card" onclick="go('tests.html')">
+            <div class="card-title">Tests</div>
+            <div class="card-description">Practice questions</div>
+        </div>
+
+        <div class="card" onclick="go('leitner.html')">
+            <div class="card-title">Leitner</div>
+            <div class="card-description">Review mistakes</div>
+        </div>
+
+        <div class="card" onclick="go('progress.html')">
+            <div class="card-title">Progress</div>
+            <div class="card-description">Track improvements</div>
+        </div>
+
+        <div class="card" onclick="go('messages.html')">
+            <div class="card-title">Messages</div>
+            <div class="card-description">Teacher updates</div>
+        </div>
+
+        <div class="card" onclick="go('settings.html')">
+            <div class="card-title">Settings</div>
+            <div class="card-description">Customize your app</div>
+        </div>
+
+    </div>
+
+    <div class="nav">
+        <div class="nav-item active">Home</div>
+        <div class="nav-item" onclick="go('books.html')">Study</div>
+        <div class="nav-item" onclick="go('messages.html')">Messages</div>
+        <div class="nav-item" onclick="go('settings.html')">Settings</div>
+    </div>
+
+    <script>
+        function go(page) {
+            window.location.href = page;
+        }
+
+        // Load Student Name
+        const user = JSON.parse(localStorage.getItem("lwfred_user") || "{}");
+        if (user.name) {
+            document.getElementById("greeting").innerText = "Hello, " + user.name + "!";
+        }
+    </script>
+
+</body>
+</html>
