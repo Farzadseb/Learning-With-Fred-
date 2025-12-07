@@ -1,0 +1,182 @@
+/* ==============================================
+   Learning With Fred – Global iOS Style
+   Version: RC4
+   ============================================== */
+
+:root {
+    --blue: #4C6FFF;
+    --blue-soft: #E4E8FF;
+    --text-dark: #1A1A1A;
+    --text-light: #7A7F9E;
+    --bg: #F2F4FF;
+    --white: #FFFFFF;
+    --radius: 18px;
+    --transition: 0.25s ease;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* ==============================================
+   Typography
+============================================== */
+h1, h2, h3, h4 {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ==============================================
+   Buttons
+============================================== */
+
+button {
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: white;
+    border-radius: var(--radius);
+    padding: 14px;
+    width: 100%;
+    font-size: 17px;
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+}
+
+.btn-soft {
+    background: var(--blue-soft);
+    color: var(--blue);
+    border-radius: var(--radius);
+    padding: 14px;
+    width: 100%;
+    font-size: 17px;
+}
+
+.btn-soft:active {
+    transform: scale(0.97);
+}
+
+/* ==============================================
+   Card Style
+============================================== */
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: var(--transition);
+}
+
+.card:active {
+    transform: scale(0.97);
+}
+
+/* ==============================================
+   Inputs
+============================================== */
+
+input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: var(--radius);
+    border: 1px solid #CED2F2;
+    outline: none;
+    margin-top: 12px;
+}
+
+input:focus {
+    border-color: var(--blue);
+}
+
+/* ==============================================
+   Bottom Navigation
+============================================== */
+
+.nav {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 70px;
+    background: white;
+    border-top: 1px solid #DCE0F5;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 999;
+}
+
+.nav-item {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.nav-item.active {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+/* ==============================================
+   Fade Animations
+============================================== */
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* ==============================================
+   Utility Classes
+============================================== */
+
+.center {
+    text-align: center;
+}
+
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+.mt-40 { margin-top: 40px; }
+
+/* Safe area padding for iPhone */
+.safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+}
