@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning With Fred – Login</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F7F9FF;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        p {
+            opacity: 0.6;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 18px;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #CED2F2;
+            font-size: 16px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 18px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .student-btn {
+            background: #4C6FFF;
+            color: white;
+        }
+
+        .guest-btn {
+            background: #E4E8FF;
+            color: #3A47A7;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome</h1>
+    <p>Select how you want to continue</p>
+
+    <div class="card">
+        <h2>Student Login</h2>
+        <p>Enter your access code to unlock full features</p>
+
+        <input type="text" id="studentName" placeholder="Your Name">
+        <input type="text" id="studentCode" placeholder="Access Code">
+
+        <button class="student-btn" onclick="loginStudent()">Continue</button>
+    </div>
+
+    <div class="card">
+        <h2>Guest Mode</h2>
+        <p>Try 5 exercises per day</p>
+
+        <button class="guest-btn" onclick="loginGuest()">Enter as Guest</button>
+    </div>
+
+    <script>
+        function loginStudent() {
+            const name = document.getElementById("studentName").value;
+            const code = document.getElementById("studentCode").value;
+
+            if (!name || !code) {
+                alert("Please enter your name and access code.");
+                return;
+            }
+
+            const user = {
+                name,
+                code,
+                role: "student"
+            };
+
+            localStorage.setItem("lwfred_user", JSON.stringify(user));
+            window.location.href = "student-home.html";
+        }
+
+        function loginGuest() {
+            const user = {
+                role: "guest"
+            };
+
+            localStorage.setItem("lwfred_user", JSON.stringify(user));
+            window.location.href = "guest-home.html";
+        }
+    </script>
+
+</body>
+</html>
